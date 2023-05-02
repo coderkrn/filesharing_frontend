@@ -47,7 +47,7 @@ export default function Home() {
                 </div>
             </div>
             <div className='container text-center'>
-                <label>Share the link</label>
+                <label>Share the download link</label>
                 <div className='text'>
                     <input type='text' value={result} placeholder='' />
                     <button onClick={handleCopy}><i class="fa-solid fa-copy"></i></button>
