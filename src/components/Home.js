@@ -1,5 +1,8 @@
 import React, { useRef, useState, useEffect } from 'react'
 import { uploadFile } from '../services/api';
+import { ToastContainer, toast } from 'react-toastify';
+
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function Home() {
 
@@ -9,8 +12,9 @@ export default function Home() {
     const fileInputRef = useRef();
     const uploadClick = () => {
         fileInputRef.current.click();
+   
     }
-    console.log(file)
+    // console.log(file)
 
     useEffect(() => {
         const getImage = async () => {
@@ -21,17 +25,22 @@ export default function Home() {
 
                 let response = await uploadFile(data);
                 setResult(response.path);
+                toast.success('Donwload link generated', {
+                    position: "top-right",
+                    autoClose: 5000,
+                    });
             }
 
         }
         getImage()
     }, [file])
 
-    const handleCopy = ()=>{
+    const handleCopy = () => {
         navigator.clipboard.writeText(result)
     }
     return (
         <>
+        <ToastContainer/>
             <div className="card text-center">
                 <div className="card-header">
                     {/* Featured */}
